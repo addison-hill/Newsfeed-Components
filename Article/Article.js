@@ -85,6 +85,20 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Addison Hill was here',
+    date: 'Oct 2nd, 2019',
+    firstParagraph: 'Oh my gosh this is so much fun.',
+    secondParagraph: 'Im listening to Kaskade.',
+    thirdParagraph: 'It is past midnight.'
+  },
+  {
+    title: 'Components are Awesome!',
+    date: 'Oct 3rd, 2019',
+    firstParagraph: 'The power its... Overwhelming!',
+    secondParagraph: 'Can add user interaction',
+    thirdParagraph: 'Adding multiple objects'
   }
 ];
 
@@ -112,8 +126,12 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+let container = document.querySelector('html');
+
 //--------------------createArticle function-----------------------
-function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+
+function createArticle(data) {
   const article = document.createElement('div');
   const articleTitle = document.createElement('h2');
   const articleDate = document.createElement('p');
@@ -129,11 +147,37 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   article.appendChild(articlePara3);
   article.appendChild(articleBtn);
 
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  articleBtn.classList.add('expandButton');
+
+  articleBtn.textContent = 'Expand';
+  articleTitle.textContent = data.title;
+  articleDate.textContent = data.date;
+  articlePara1.textContent = data.firstParagraph;
+  articlePara2.textContent = data.secondParagraph;
+  articlePara3.textContent = data.thirdParagraph;
+
+
+
 //----------- event listener toggle ----------
-article.addEventListener('click', () => {
-  articleBtn.classList.toggle('article-open');
+
+articleBtn.addEventListener('click', () => {
+  article.classList.toggle('article-open');
+  // articleBtn.classList.toggle('close');
+
 })
+
 return article;
 }
 
 //------------------ Map Over the Data -----------------------------
+
+let articleData = data.map( (item) => {
+  let newData = createArticle(item);
+  return newData;
+})
+
+articleData.forEach((newData) => {
+  container.appendChild(newData);
+})
