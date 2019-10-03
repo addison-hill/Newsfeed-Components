@@ -34,3 +34,38 @@ let menuItems = [
   
 */
 //-------------------------MY WORK STARTS HERE ---------------------
+
+function createMenu(menuItems) {
+  const menu = document.createElement('div');
+  const items = document.createElement('ul');
+
+  menu.appendChild(items);
+
+  menu.classList.add('menu');
+
+  menuItems.forEach((item) => {
+    var li = document.createElement('li');
+    var text = document.createTextNode(item);
+    li.appendChild(text);
+    document.getElementsByTagName('ul').appendChild(li);
+    return text
+  })
+
+  let selectMenu = document.querySelector('menu-button');
+  selectMenu.addEventListener('click', () => {
+    menu.classList.toggle('menu--open');
+  })
+  
+  return menu;
+}
+
+let menuData = menuItems.map( (item) => {
+  let newData = createMenu(item);
+  return newData;
+})
+
+menuData.forEach((newData) => {
+  container.appendChild(newData);
+})
+
+//--- FOR TOMORROW needs work on first forEach, and adding it to the dom. Dont know if these ^ two functions work or not

@@ -87,7 +87,7 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   },
   {
-    title: 'Addison Hill was here',
+    title: 'Addison Hill Hacked Lambda Newsfeed',
     date: 'Oct 2nd, 2019',
     firstParagraph: 'Oh my gosh this is so much fun.',
     secondParagraph: 'Im listening to Kaskade.',
